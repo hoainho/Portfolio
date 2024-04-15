@@ -191,16 +191,16 @@ export function IslandSea({
 
       // Set the current stage based on the island's orientation
       switch (true) {
-        case normalizedRotation >= 4.8 && normalizedRotation <= 5.45:
+        case normalizedRotation >= 4.7 && normalizedRotation <= 5:
           setCurrentStage(4);
           break;
-        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
+        case normalizedRotation >= 5.5 && normalizedRotation <= 6:
           setCurrentStage(3);
           break;
-        case normalizedRotation >= 2.2 && normalizedRotation <= 2.3:
+        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
           setCurrentStage(2);
           break;
-        case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
+        case normalizedRotation >= 3 && normalizedRotation <= 3.3:
           setCurrentStage(1);
           break;
         default:
@@ -210,7 +210,7 @@ export function IslandSea({
   });
 
   useEffect(() => {
-    if (activeIsland) {
+    if (activeIsland && !localStorage.getItem('ignore')) {
       var i = 0;
       var interval = setInterval(function () {
         if (i >= 450) {

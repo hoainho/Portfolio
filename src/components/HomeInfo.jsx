@@ -17,11 +17,11 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <h1 className='flex flex-col justify-center items-center sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
         <div>Welcome to
-        <span className='font-semibold mx-2 text-white'>My Portfolio</span>
+        <span className='font-semibold mx-2 text-white '>My Portfolio</span>
         👋</div>
         <br />
         Let's swipe or drag left/right on the screen to explore my work 
-        <img src={swipe} alt='swipe' className='w-10 h-10 object-contain' />
+        <img src={swipe} alt='swipe' className='animate-bounce w-10 h-10 object-contain' />
       </h1>
     );
 

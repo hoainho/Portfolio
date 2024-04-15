@@ -4,14 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import sakura from "../assets/sakura.mp3";
 import { HomeInfo, Loader } from "../components";
 import { soundoff, soundon, arrow } from "../assets/icons";
-import {
-  Bird,
-  Plane,
-  Sky,
-  NightSky,
-  IslandSea,
-  Drone,
-} from "../models";
+import { Bird, Plane, Sky, NightSky, IslandSea, Drone } from "../models";
 
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));
@@ -48,9 +41,24 @@ const Home = () => {
     if (checkInIsland) {
       setIsPlayingMusic(true);
       setCurrentStage(1);
+
+      if (!localStorage.getItem("ignore")) {
+        localStorage.setItem("ignore", true);
+      }
     }
   }, [checkInIsland]);
 
+  useEffect(() => {
+    if (localStorage.getItem("ignore")) {
+      setActiveIsland(true);
+      setMoveX(0);
+      setCurrentStage(-1)
+      let timeout = setTimeout(() => {
+        setCheckInIsland(true);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, []);
   const adjustDroneForScreenSize = () => {
     let screenScale, screenPosition;
 
@@ -82,8 +90,8 @@ const Home = () => {
 
   const handleNextStep = () => {
     setCurrentStage(null);
-    var i = 0;
-    var interval = setInterval(function () {
+    let i = 0;
+    let interval = setInterval(function () {
       if (i >= 14) clearInterval(interval);
       setMoveX(i);
       i += 0.07;
@@ -122,7 +130,7 @@ const Home = () => {
             intensity={1}
           />
 
-          {!activeIsland ? (
+          {!activeIsland && !localStorage.getItem("ignore") ? (
             <NightSky
               position={[moveX, seaPosition[1], seaPosition[2]]}
               rotation={[0.5, Math.PI, Math.PI]}
@@ -163,21 +171,6 @@ const Home = () => {
                 : dronePosition
             }
           />
-
-          {/* <IslandSpecial
-            isRotating={isRotating}
-            setIsRotating={setIsRotating}
-            setCurrentStage={setCurrentStage}
-            position={islandPosition}
-            rotation={[0.1, 6.2472, 0]}
-            scale={islandScale}
-          /> */}
-          {/* <Swimming
-            isRotating={isRotating}
-            position={biplanePosition}
-            scale={biplaneScale}
-            rotation={[-1, 1.55, 1.2]}
-          /> */}
         </Suspense>
       </Canvas>
 

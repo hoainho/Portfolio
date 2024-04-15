@@ -1,112 +1,362 @@
 import { meta, shopify, starbucks, tesla } from "../assets/images";
 import {
+    DynamoDB,
+    GCP,
+    SendGrid,
+    adonis,
+    antdesign,
+    aws,
+    bootstrap,
     car,
     contact,
     css,
+    django,
+    docker,
+    elastic,
     estate,
     express,
+    firestore,
     git,
     github,
+    gitlab,
+    golang,
+    heroku,
     html,
     javascript,
+    jest,
+    jquery,
     linkedin,
     mongodb,
     motion,
     mui,
+    mysql,
+    nest,
+    netlify,
     nextjs,
     nodejs,
+    postgresql,
     pricewise,
+    python,
+    quasar,
     react,
+    redis,
     redux,
     sass,
     snapgram,
+    socket,
+    stripe,
     summiz,
     tailwindcss,
     threads,
-    typescript
+    twilio,
+    typescript,
+    vercel,
+    vue
 } from "../assets/icons";
 
 export const skills = [
-    {
-        imageUrl: css,
-        name: "CSS",
-        type: "Frontend",
-    },
-    {
-        imageUrl: express,
-        name: "Express",
-        type: "Backend",
-    },
-    {
-        imageUrl: git,
-        name: "Git",
-        type: "Version Control",
-    },
-    {
-        imageUrl: github,
-        name: "GitHub",
-        type: "Version Control",
-    },
-    {
-        imageUrl: html,
-        name: "HTML",
-        type: "Frontend",
-    },
-    {
-        imageUrl: javascript,
-        name: "JavaScript",
-        type: "Frontend",
-    },
-    {
-        imageUrl: mongodb,
-        name: "MongoDB",
-        type: "Database",
-    },
-    {
-        imageUrl: motion,
-        name: "Motion",
-        type: "Animation",
-    },
-    {
-        imageUrl: mui,
-        name: "Material-UI",
-        type: "Frontend",
-    },
+
     {
         imageUrl: nextjs,
         name: "Next.js",
+        yoe: 2,
         type: "Frontend",
+        order:1
     },
     {
         imageUrl: nodejs,
         name: "Node.js",
+        yoe: 4,
         type: "Backend",
+        order:1
     },
     {
         imageUrl: react,
         name: "React",
+        yoe: 4,
         type: "Frontend",
+        order:1
     },
     {
         imageUrl: redux,
         name: "Redux",
+        yoe: 3,
         type: "State Management",
+        order:1
     },
     {
         imageUrl: sass,
         name: "Sass",
+        yoe: 4,
         type: "Frontend",
+        order:1
     },
     {
         imageUrl: tailwindcss,
         name: "Tailwind CSS",
+        yoe: 4,
         type: "Frontend",
+        order:1
     },
     {
         imageUrl: typescript,
         name: "TypeScript",
+        yoe: 3,
         type: "Frontend",
-    }
+        order:1
+    },
+    {
+        imageUrl: css,
+        name: "CSS",
+        yoe: 4,
+        type: "Frontend",
+        order:1
+    },
+    {
+        imageUrl: javascript,
+        name: "JavaScript",
+        yoe: 4,
+        type: "Frontend",
+        order:1
+    },
+    {
+        imageUrl: html,
+        name: "HTML",
+        yoe: 4,
+        type: "Frontend",
+        order:1
+    },
+    {
+        imageUrl: express,
+        name: "Express",
+        yoe: 2,
+        type: "Backend",
+        order:1
+    },
+    {
+        imageUrl: git,
+        name: "Git",
+        yoe: 4,
+        type: "Version Control",
+        order:1
+    },
+    {
+        imageUrl: github,
+        name: "GitHub",
+        yoe: 4,
+        type: "Version Control",
+        order:1
+    },
+    {
+        imageUrl: mongodb,
+        name: "MongoDB",
+        yoe: 1,
+        type: "Database",
+        order:1
+    },
+    {
+        imageUrl: mui,
+        name: "Material-UI",
+        yoe: 3,
+        type: "Frontend",
+        order:1
+    },
+    {
+        imageUrl: adonis,
+        name: "AdonisJS",
+        yoe: 1,
+        type: "Backend",
+        order:1
+    },
+    {
+        imageUrl: antdesign,
+        name: "Ant Design",
+        yoe: 1,
+        type: "Frontend",
+        order:1
+    },
+    {
+        imageUrl: aws,
+        name: "AWS",
+        yoe: 2,
+        type: "Devops",
+        order:1
+    },
+    {
+        imageUrl: GCP,
+        name: "Google Cloud",
+        yoe: 2,
+        type: "Devops",
+        order:1
+    },
+    {
+        imageUrl: bootstrap,
+        name: "Bootstrap",
+        yoe: 4,
+        type: "Frontend",
+        order:1,
+    },
+    {
+        imageUrl: django,
+        name: "Django",
+        yoe: 0.5,
+        type: "Frontend",
+        order:1,
+    },
+    {
+        imageUrl: docker,
+        name: "Docker",
+        yoe: 2,
+        type: "Backend",
+        order:1,
+    },
+    {
+        imageUrl: DynamoDB,
+        name: "DynamoDB",
+        yoe: 0.5,
+        type: "Database",
+        order:1,
+    },
+    {
+        imageUrl: elastic,
+        name: "Elastic",
+        yoe: 1,
+        type: "Service",
+        order:1,
+    },
+    {
+        imageUrl: firestore,
+        name: "Firebase",
+        yoe: 2,
+        type: "Database",
+        order:1,
+    },
+    {
+        imageUrl: gitlab,
+        name: "Gitlab",
+        yoe: 2,
+        type: "SVN",
+        order:1,
+    },
+    {
+        imageUrl: golang,
+        name: "Go",
+        yoe: 2,
+        type: "Backend",
+        order:1,
+    },
+    {
+        imageUrl: heroku,
+        name: "Heroku",
+        yoe: 2,
+        type: "Devops",
+        order:1,
+    },
+    {
+        imageUrl: jest,
+        name: "Jest",
+        yoe: 2,
+        type: "Test",
+        order:1,
+    },
+    {
+        imageUrl: jquery,
+        name: "Jquery",
+        yoe: 1,
+        type: "Frontend",
+        order:1,
+    },
+    {
+        imageUrl: mysql,
+        name: "MySQL",
+        yoe: 4,
+        type: "Database",
+        order:1,
+    },
+    {
+        imageUrl: nest,
+        name: "NestJS",
+        yoe: 2,
+        type: "Backend",
+        order:1,
+    },
+    {
+        imageUrl: netlify,
+        name: "Netlify",
+        yoe: 2,
+        type: "Devops",
+        order:1,
+    },
+    {
+        imageUrl: postgresql,
+        name: "PostgreSQL",
+        yoe: 3,
+        type: "Database",
+        order:1,
+    },
+    {
+        imageUrl: python,
+        name: "Python",
+        yoe: 1,
+        type: "Backend",
+        order:1,
+    },
+    {
+        imageUrl: quasar,
+        name: "Quasar",
+        yoe: 1,
+        type: "Frontend",
+        order:1,
+    },
+    {
+        imageUrl: redis,
+        name: "Redis",
+        yoe: 3,
+        type: "Database",
+        order:1,
+    },
+    {
+        imageUrl: SendGrid,
+        name: "SendGrid",
+        yoe: 1,
+        type: "Service",
+        order:1,
+    },
+    {
+        imageUrl: socket,
+        name: "Socket",
+        yoe: 2,
+        type: "Service",
+        order:1,
+    },
+    {
+        imageUrl: stripe,
+        name: "Stripe",
+        yoe: 2,
+        type: "Service",
+        order:1,
+    },
+    {
+        imageUrl: twilio,
+        name: "Twilio",
+        yoe: 1,
+        type: "Service",
+        order:1,
+    },
+    {
+        imageUrl: vercel,
+        name: "Vercel",
+        yoe: 2,
+        type: "Devops",
+        order:1,
+    },
+    {
+        imageUrl: vue,
+        name: "Vue.js",
+        yoe: 2,
+        type: "Frontend",
+        order:1,
+    },
 ];
 
 export const experiences = [
