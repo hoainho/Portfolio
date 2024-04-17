@@ -25,6 +25,7 @@ export function Fox({ currentAnimation, ...props }) {
     Object.values(actions).forEach((action) => action.stop());
 
     if (actions[currentAnimation]) {
+      console.log(actions);
       actions[currentAnimation].play();
     }
   }, [actions, currentAnimation]);

@@ -21,7 +21,9 @@ const HomeInfo = ({ currentStage }) => {
         👋</div>
         <br />
         Let's swipe or drag left/right on the screen to explore my work 
-        <img src={swipe} alt='swipe' className='animate-bounce w-10 h-10 object-contain' />
+        <div className="bg-white p-2 rounded-full animate-bounce">
+        <img src={swipe} alt='swipe' className=' w-10 h-10 object-contain' />
+        </div>
       </h1>
     );
 

@@ -115,5 +115,5 @@ export {
     vercel,
     vue,
     vuex,
-    bootstrap
+    bootstrap,
 }

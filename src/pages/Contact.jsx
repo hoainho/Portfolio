@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 
-import { Fox } from "../models";
+import { Bird, Drone, Fox } from "../models";
 import useAlert from "../hooks/useAlert";
 import { Alert, Loader } from "../components";
 
@@ -17,7 +17,10 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleFocus = () => setCurrentAnimation("walk");
+  const handleFocus = (event) => {
+    console.log('handleFocus', event);
+    event?.target?.name === "email" ? setCurrentAnimation("walk.left") : setCurrentAnimation("walk")
+  };
   const handleBlur = () => setCurrentAnimation("idle");
 
   const handleSubmit = (e) => {
@@ -31,9 +34,9 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "JavaScript Mastery",
+          to_name: "Hoài Nhớ",
           from_email: form.email,
-          to_email: "sujata@jsmastery.pro",
+          to_email: "hoainho.work@gmail.com",
           message: form.message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
@@ -43,7 +46,7 @@ const Contact = () => {
           setLoading(false);
           showAlert({
             show: true,
-            text: "Thank you for your message 😃",
+            text: "Thank you for your message. I appreciate your communication. Allow me a moment to review its contents.",
             type: "success",
           });
 
@@ -64,7 +67,7 @@ const Contact = () => {
 
           showAlert({
             show: true,
-            text: "I didn't receive your message 😢",
+            text: "Regrettably, I have not yet received your message. Please try again 😢",
             type: "danger",
           });
         }
@@ -89,7 +92,7 @@ const Contact = () => {
               type='text'
               name='name'
               className='input'
-              placeholder='John'
+              placeholder='Fox'
               required
               value={form.name}
               onChange={handleChange}
@@ -103,7 +106,7 @@ const Contact = () => {
               type='email'
               name='email'
               className='input'
-              placeholder='John@gmail.com'
+              placeholder='Fox@gmail.com'
               required
               value={form.email}
               onChange={handleChange}
@@ -132,7 +135,7 @@ const Contact = () => {
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
-            {loading ? "Sending..." : "Submit"}
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </form>
       </div>
