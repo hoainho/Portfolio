@@ -97,7 +97,7 @@ const Home = () => {
   const [seaScale, seaPosition] = adjustIslandForScreenSize(null, scaleIsland);
 
   return (
-    <section className="w-full h-screen relative">
+    <section className="w-full h-[100dvh] relative">
       <div
         className={`absolute left-0 right-0 z-10 flex items-center justify-center top-28`}
       >
@@ -180,7 +180,7 @@ const Home = () => {
         />
       </div>
       {!activeIsland && moveX === 0 && (
-        <div className="absolute bottom-2 right-2 rounded-full bg-white">
+        <div className="absolute bottom-2 right-2 sm:bottom-2 sm:right-2 rounded-full bg-white">
           <img
             src={arrow}
             alt="jukebox"
