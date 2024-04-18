@@ -23,9 +23,10 @@ export function Fox({ currentAnimation, ...props }) {
   // This effect will run whenever the currentAnimation prop changes
   useEffect(() => {
     Object.values(actions).forEach((action) => action.stop());
-
+    if(currentAnimation === 'all'){
+      Object.values(actions).forEach((action) => action.play());
+    }
     if (actions[currentAnimation]) {
-      console.log(actions);
       actions[currentAnimation].play();
     }
   }, [actions, currentAnimation]);

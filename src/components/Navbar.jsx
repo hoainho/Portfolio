@@ -4,8 +4,7 @@ import { HN_logo } from "../assets/icons";
 
 const Navbar = () => {
   const {pathname} = useLocation()
-  console.log('pathname', pathname);
-  const isLightTheme = ['/about', '/projects', '/contact'].includes(pathname) ? true : false
+  const isLightTheme = !['/'].includes(pathname)
   return (
     <header className='header'>
       <NavLink to='/'>
