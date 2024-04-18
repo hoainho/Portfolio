@@ -490,7 +490,7 @@ export const projects = [
   {
     iconUrl: maqro,
     theme: "btn-back-black",
-    name: "Real-Estate Application",
+    name: "Maqro",
     description: `I spearheaded a pivotal project aimed at revolutionizing the stock market landscape for investors. At its core, this project entailed the development of a dynamic server tailored specifically for mobile platforms. Leveraging my expertise in frameworks such as AdonisJS, along with implementing cutting-edge technologies like Socket.io and Bull for background job management and queueing, I engineered a robust and scalable infrastructure to meet the demands of real-time stock data processing. Utilizing AWS for seamless deployment, I orchestrated the creation of a responsive and intuitive UI, complete with dynamic, real-time charting capabilities. Furthermore, I engineered intricate functionalities including payment processing, stock trading, and data optimization, enabling smooth interactions through APIs even with large datasets. This project not only showcased my technical prociency but also my ability to innovate and deliver solutions that elevate user experiences in the financial domain.`,
     link: "https://maqro.com.au/",
   },

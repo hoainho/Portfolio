@@ -21,13 +21,10 @@ const Home = () => {
   const [camera] = useState(1000);
 
   useEffect(() => {
-    if (isPlayingMusic) {
-      audioRef.current.play();
+    if (isPlayingMusic && audioRef.current) {
+      audioRef.current.play().then(() => console.log('Play audio')).catch((e) => console.log(e));
     }
-
-    return () => {
-      audioRef.current.pause();
-    };
+    return () => audioRef.current.pause();
   }, [isPlayingMusic]);
 
   useEffect(() => {
@@ -41,7 +38,6 @@ const Home = () => {
     if (checkInIsland) {
       setIsPlayingMusic(true);
       setCurrentStage(1);
-
       if (!localStorage.getItem("ignore")) {
         localStorage.setItem("ignore", true);
       }
@@ -52,9 +48,9 @@ const Home = () => {
     if (localStorage.getItem("ignore")) {
       setActiveIsland(true);
       setMoveX(0);
-      setCurrentStage(-1)
-      let timeout = setTimeout(() => {
-        setCheckInIsland(true);
+      setCurrentStage(-1);
+        let timeout = setTimeout(() => {
+          setCheckInIsland(true)
       }, 100);
       return () => clearTimeout(timeout);
     }
@@ -178,6 +174,7 @@ const Home = () => {
         <img
           src={!isPlayingMusic ? soundoff : soundon}
           alt="jukebox"
+          id="sound-icon"
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
           className="w-10 h-10 cursor-pointer object-contain"
         />

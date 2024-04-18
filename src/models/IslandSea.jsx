@@ -79,7 +79,6 @@ export function IslandSea({
 
   // Handle keydown events
   const handleKeyDown = (event) => {
-    console.log("event.key", event.key);
     //Control Character by keyboard
     const spaceBase = 0.002 * Math.PI;
     if (event.key === "ArrowLeft") {
