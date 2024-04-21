@@ -4,6 +4,7 @@ import { a } from "@react-spring/three";
 
 import drone from "../assets/3d/buster_drone.glb";
 import { useThree } from "@react-three/fiber";
+import { MeshBasicMaterial } from "three";
 // 3D Model from: https://sketchfab.com/3d-models/buster-drone-294e79652f494130ad2ab00a13fdbafd
 export function Drone({ isRotating, ...props }) {
   const { gl, viewport } = useThree();
@@ -12,6 +13,8 @@ export function Drone({ isRotating, ...props }) {
   const { scene, animations, nodes, materials } = useGLTF(drone);
   // Get animation actions associated with the drone
   const { actions } = useAnimations(animations, ref);
+
+  scene.overrideMaterial = new MeshBasicMaterial({ color: "blue" });
 
   useEffect(() => {
     Object.values(actions).forEach((action) => {
@@ -38,7 +41,7 @@ export function Drone({ isRotating, ...props }) {
   }, [gl]);
 
   return (
-    <a.group ref={ref} {...props} onClick={() => console.log("click")} dispose={null}>
+    <a.group ref={ref} {...props} onClick={() => console.log("Hi there, please don't click me, let swipe screen")} dispose={null}>
     <a.group name="Sketchfab_Scene">
       <a.group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.013}>
         <a.group name="BusterDronefbx" rotation={[Math.PI / 2, 0, 0]}>

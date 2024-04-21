@@ -125,7 +125,6 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
-
           {!activeIsland && !localStorage.getItem("ignore") ? (
             <NightSky
               position={[moveX, seaPosition[1], seaPosition[2]]}
