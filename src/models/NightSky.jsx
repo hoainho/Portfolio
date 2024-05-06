@@ -1,10 +1,15 @@
 import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { a } from "@react-spring/three";
+// import { a } from "@react-spring/three";
 
 import nightSkyScene from "../assets/3d/night_sky.glb";
 
+import { Globals } from "@react-spring/shared";
+
+Globals.assign({
+  frameLoop: "demand",
+});
 // 3D Model from: https://sketchfab.com/3d-models/phoenix-bird-844ba0cf144a413ea92c779f18912042
 export function NightSky({ isRotating }, props) {
   const skyRef = useRef();
@@ -18,13 +23,13 @@ export function NightSky({ isRotating }, props) {
   });
 
   return (
-    <a.group {...props} ref={skyRef}>
-      <a.group
+    <group {...props} ref={skyRef}>
+      <group
         position={[-1.007, -6.611, 0]}
         rotation={[Math.PI / 2, 0, -Math.PI]}
         scale={0.003}
       >
-        <a.group rotation={[Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             castShadow
             receiveShadow
@@ -34,8 +39,8 @@ export function NightSky({ isRotating }, props) {
             rotation={[0.354, -0.348, -3.024]}
             scale={0.999}
           />
-        </a.group>
-      </a.group>
-    </a.group>
+        </group>
+      </group>
+    </group>
   );
 }

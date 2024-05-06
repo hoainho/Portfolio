@@ -6,12 +6,18 @@ Source: https://sketchfab.com/3d-models/sea-keep-lonely-watcher-09a15a0c14cb4acc
 Title: Sea Keep "Lonely Watcher"
 */
 
-import { a } from "@react-spring/three";
+// import { a } from "@react-spring/three";
 import { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 
 import islandScene from "../assets/3d/sea.glb";
+
+import { Globals } from "@react-spring/shared";
+
+Globals.assign({
+  frameLoop: "demand",
+});
 export function IslandSea({
   isRotating,
   setIsRotating,
@@ -223,15 +229,15 @@ export function IslandSea({
     }
   }, [activeIsland]);
   return (
-    <a.group
+    <group
       {...props}
       ref={islandRef}
     >
-      <a.group
+      <group
         position={[17.117, 218.356, 23.591]}
         rotation={[-Math.PI / 2, 0, Math.PI]}
       >
-        <a.group position={[33.745, 38.713, -60.289]}>
+        <group position={[33.745, 38.713, -60.289]}>
           <mesh
             castShadow
             receiveShadow
@@ -262,8 +268,8 @@ export function IslandSea({
             geometry={nodes.Fortress_Sand_0.geometry}
             material={materials.Sand}
           />
-        </a.group>
-      </a.group>
+        </group>
+      </group>
       <mesh
         castShadow
         receiveShadow
@@ -279,7 +285,7 @@ export function IslandSea({
         material={materials.material_4}
         rotation={[-Math.PI / 2, 0, 0]}
       />
-    </a.group>
+    </group>
   );
 }
 

@@ -4,6 +4,11 @@ import { useFrame } from "@react-three/fiber";
 
 import planeScene from "../assets/3d/plane.glb";
 
+import { Globals } from "@react-spring/shared";
+
+Globals.assign({
+  frameLoop: "demand",
+});
 // 3D Model from: https://sketchfab.com/3d-models/stylized-ww1-plane-c4edeb0e410f46e8a4db320879f0a1db
 export function Plane() {
   const birdRef = useRef();

@@ -4,6 +4,11 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 
 import birdScene from "../assets/3d/bird.glb";
 
+import { Globals } from "@react-spring/shared";
+
+Globals.assign({
+  frameLoop: "demand",
+});
 // 3D Model from: https://sketchfab.com/3d-models/phoenix-bird-844ba0cf144a413ea92c779f18912042
 export function Bird({ setCurrentStage }) {
   const birdRef = useRef();
