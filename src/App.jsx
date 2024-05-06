@@ -1,10 +1,16 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 
+import ReactGA from "react-ga4";
 import { Footer, Navbar } from "./components";
 import { About, Contact, Home, Projects } from "./pages";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    ReactGA.pageview(pathname);
+  }, [pathname]);
   return (
     <main className="bg-slate-300/20">
       <Router>
