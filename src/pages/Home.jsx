@@ -3,15 +3,14 @@ import { Suspense, useEffect, useRef, useState } from "react";
 
 import sakura from "../assets/sakura.mp3";
 import { HomeInfo, Loader } from "../components";
-import { soundoff, soundon, arrow } from "../assets/icons";
-import { Bird, Plane, Sky, NightSky, IslandSea, Drone } from "../models";
+import { soundoff, soundon } from "../assets/icons";
+import { Bird, Plane, IslandSea, Drone } from "../models";
 
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));
   audioRef.current.volume = 0.4;
   audioRef.current.loop = true;
 
-  const [checkInIsland, setCheckInIsland] = useState(false);
   const [moveX, setMoveX] = useState(0);
   const [scaleIsland, setScaleIsland] = useState(null);
   const [activeIsland, setActiveIsland] = useState(false);
@@ -22,7 +21,10 @@ const Home = () => {
 
   useEffect(() => {
     if (isPlayingMusic && audioRef.current) {
-      audioRef.current.play().then(() => console.log('Play audio')).catch((e) => console.log(e));
+      audioRef.current
+        .play()
+        .then(() => console.log("Play audio"))
+        .catch((e) => console.log(e));
     }
     return () => audioRef.current.pause();
   }, [isPlayingMusic]);
@@ -34,27 +36,6 @@ const Home = () => {
     }
   }, [moveX]);
 
-  useEffect(() => {
-    if (checkInIsland) {
-      setIsPlayingMusic(true);
-      setCurrentStage(1);
-      if (!localStorage.getItem("ignore")) {
-        localStorage.setItem("ignore", true);
-      }
-    }
-  }, [checkInIsland]);
-
-  useEffect(() => {
-    if (localStorage.getItem("ignore")) {
-      setActiveIsland(true);
-      setMoveX(0);
-      setCurrentStage(-1);
-        let timeout = setTimeout(() => {
-          setCheckInIsland(true)
-      }, 100);
-      return () => clearTimeout(timeout);
-    }
-  }, []);
   const adjustDroneForScreenSize = () => {
     let screenScale, screenPosition;
 
@@ -84,15 +65,6 @@ const Home = () => {
     return [screenScale, screenPosition];
   };
 
-  const handleNextStep = () => {
-    setCurrentStage(null);
-    let i = 0;
-    let interval = setInterval(function () {
-      if (i >= 14) clearInterval(interval);
-      setMoveX(i);
-      i += 0.07;
-    }, 1);
-  };
   const [droneScale, dronePosition] = adjustDroneForScreenSize();
   const [seaScale, seaPosition] = adjustIslandForScreenSize(null, scaleIsland);
 
@@ -125,38 +97,18 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
-          {!activeIsland && !localStorage.getItem("ignore") ? (
-            <NightSky
-              position={[moveX, seaPosition[1], seaPosition[2]]}
-              rotation={[0.5, Math.PI, Math.PI]}
-              scale={seaScale}
-            />
-          ) : (
-            <Sky isRotating={isRotating} />
-          )}
-          {activeIsland && (
-            <>
-              {checkInIsland && (
-                <>
-                  <Bird setCurrentStage={setCurrentStage} />
-                  <Plane />
-                </>
-              )}
-
-              <IslandSea
-                isRotating={isRotating}
-                setIsRotating={setIsRotating}
-                setCurrentStage={setCurrentStage}
-                position={seaPosition}
-                rotation={[0.5, Math.PI, Math.PI]}
-                scale={seaScale}
-                setScaleIsland={setScaleIsland}
-                activeIsland={activeIsland}
-                setCheckInIsland={setCheckInIsland}
-              />
-            </>
-          )}
-
+          <Bird setCurrentStage={setCurrentStage} />
+          <Plane />
+          <IslandSea
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
+            position={seaPosition}
+            rotation={[0.5, Math.PI, Math.PI]}
+            scale={seaScale}
+            setScaleIsland={setScaleIsland}
+            activeIsland={activeIsland}
+          />
           <Drone
             sRotating={isRotating}
             scale={droneScale}
@@ -178,16 +130,6 @@ const Home = () => {
           className="w-10 h-10 cursor-pointer object-contain"
         />
       </div>
-      {!activeIsland && moveX === 0 && (
-        <div className="absolute bottom-2 right-2 sm:bottom-2 sm:right-2 rounded-full bg-white">
-          <img
-            src={arrow}
-            alt="jukebox"
-            onClick={() => handleNextStep()}
-            className="w-10 h-10 p-2 cursor-pointer object-contain"
-          />
-        </div>
-      )}
     </section>
   );
 };

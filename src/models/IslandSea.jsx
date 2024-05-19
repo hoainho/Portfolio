@@ -25,7 +25,6 @@ export function IslandSea({
   currentFocusPoint,
   activeIsland,
   setScaleIsland,
-  setCheckInIsland,
   ...props
 }) {
   const islandRef = useRef();
@@ -214,20 +213,6 @@ export function IslandSea({
     }
   });
 
-  useEffect(() => {
-    if (activeIsland && !localStorage.getItem('ignore')) {
-      var i = 0;
-      var interval = setInterval(function () {
-        if (i >= 450) {
-          clearInterval(interval);
-          setCheckInIsland(true);
-          return;
-        }
-        setScaleIsland([0, -10, -500 + i]);
-        i += 1;
-      }, 1);
-    }
-  }, [activeIsland]);
   return (
     <group
       {...props}
