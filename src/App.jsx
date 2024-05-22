@@ -1,20 +1,28 @@
 import { useEffect } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 import ReactGA from "react-ga4";
 import { Footer, Navbar } from "./components";
 import { About, Contact, Home, Projects } from "./pages";
 import NotFound from "./pages/NotFound";
+import usePageTracking from "./hooks/usePageTracking";
 ReactGA.initialize("G-R2SSW6FQ6V");
 
+// Component to use the tracking hook within Router
+const PageTracking = () => {
+  usePageTracking();
+  return null;
+};
 const App = () => {
-
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-  }, [window.location.pathname]);
   return (
     <main className="bg-slate-300/20">
       <Router>
+        <PageTracking />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

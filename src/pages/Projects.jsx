@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import { CTA } from "../components";
 import { projects } from "../constants";
 import { arrow } from "../assets/icons";
+import useGAEventTracker from "../hooks/useGAEventTracker";
 
 const Projects = () => {
+  const GAEventTracker = useGAEventTracker('User Interaction');
+  const handleTracking = (link) => {
+    GAEventTracker('Direct To Link', link);
+  };
   return (
     <section className="max-container">
       <h1 className="head-text">
@@ -51,6 +56,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-blue-600"
+                  onClick={() => handleTracking(project.name)}
                 >
                   Live Link
                 </Link>

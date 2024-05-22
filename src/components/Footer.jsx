@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 
 import { socialLinks } from "../constants";
+import useGAEventTracker from "../hooks/useGAEventTracker";
 
 const Footer = () => {
+  const GAEventTracker = useGAEventTracker('User Interaction');
+  const handleTracking = (link) => {
+    GAEventTracker('Direct To Link', link);
+  };
+
   return (
     <footer className='footer font-poppins'>
       <hr className='border-slate-200' />
@@ -14,7 +20,7 @@ const Footer = () => {
 
         <div className='flex gap-3 justify-center items-center'>
           {socialLinks.map((link) => (
-            <Link key={link.name} to={link.link} target='_blank'>
+            <Link key={link.name} to={link.link} target='_blank' onClick={() => handleTracking(link.name)}>
               <img
                 src={link.iconUrl}
                 alt={link.name}
